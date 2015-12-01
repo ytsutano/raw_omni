@@ -17,7 +17,7 @@ There are two launch files for `raw_omni`. You need to rewrite the serial number
 
 ## YouTube Videos
 
-- [Reverse Engineered: Multiple Phantom Omni on Single ROS/Linux Machine](https://www.youtube.com/watch?v=l9I1vPg016]k)
+- [Reverse Engineered: Multiple Phantom Omni on Single ROS/Linux Machine](https://www.youtube.com/watch?v=l9I1vPg016k)
 - [Automatic Homing](https://www.youtube.com/watch?v=zR56Btddc98)
 
 ## Author
