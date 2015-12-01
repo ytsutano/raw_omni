@@ -1,0 +1,4 @@
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="omni2">
+  <xacro:include filename="omni_macro.xacro" />
+  <xacro:generate_omni omni_name="omni2" />
+</robot>

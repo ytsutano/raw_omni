@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="generate_omni" params="omni_name">
+    <link name="${omni_name}_base" >
+      <visual>
+        <origin xyz="0 0 0.045" />
+        <geometry>
+          <cylinder radius="0.060" length="0.090" />
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="${omni_name}_torso" >
+      <visual>
+        <origin xyz="0 0 0.040" />
+        <geometry>
+          <sphere radius="0.060" />
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="${omni_name}_upper_arm" >
+      <visual>
+        <origin xyz="-0.0675 0 0" />
+        <geometry>
+          <box size="0.140 0.018 0.035" />
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="${omni_name}_lower_arm" >
+      <visual>
+        <origin xyz="0 0 -0.035" />
+        <geometry>
+          <box size="0.020 0.015 0.090" />
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="${omni_name}_wrist1" />
+
+    <link name="${omni_name}_wrist2">
+      <visual>
+        <origin xyz="0.020 0 0" rpy="0 1.57 0" />
+        <geometry>
+          <cylinder radius="0.005" length="0.040" />
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="${omni_name}_stylus" >
+      <visual>
+        <origin xyz="-0.065 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.120 0.010 0.020" />
+        </geometry>
+      </visual>
+    </link>
+
+
+    <joint name="${omni_name}_waist" type="continuous" >
+      <parent link="${omni_name}_base" />
+      <child link="${omni_name}_torso" />
+      <origin xyz="0 0 0.090" rpy="0 0 0" />
+      <axis xyz="0 0 1" />
+    </joint>
+
+    <joint name="${omni_name}_shoulder" type="continuous" >
+      <parent link="${omni_name}_torso" />
+      <child link="${omni_name}_upper_arm" />
+      <origin xyz="0 0 0.040" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+    </joint>
+
+    <joint name="${omni_name}_elbow" type="continuous" >
+      <parent link="${omni_name}_upper_arm" />
+      <child link="${omni_name}_lower_arm" />
+      <origin xyz="-0.135 0 0" rpy="0 0.0 0" />
+      <axis xyz="0 1 0" />
+    </joint>
+
+    <joint name="${omni_name}_wrist1" type="continuous" >
+      <parent link="${omni_name}_lower_arm" />
+      <child link="${omni_name}_wrist1" />
+      <origin xyz="0 0 -0.080" rpy="0 0 0" />
+      <axis xyz="0 0 1" />
+    </joint>
+
+    <joint name="${omni_name}_wrist2" type="continuous" >
+      <parent link="${omni_name}_wrist1" />
+      <child link="${omni_name}_wrist2" />
+      <origin xyz="0 0 -0.055" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+    </joint>
+
+    <joint name="${omni_name}_wrist3" type="continuous" >
+      <parent link="${omni_name}_wrist2" />
+      <child link="${omni_name}_stylus" />
+      <origin xyz="0 0 0" />
+      <axis xyz="1 0 0" />
+    </joint>
+  </xacro:macro>
+</robot>
+
